@@ -134,10 +134,6 @@ class HBNBCommand(cmd.Cmd):
                         for del_ in tmp[1]:
                             if del_ == '_':
                                 tmp[1] = tmp[1].replace('_', ' ')
-                    if '"' in tmp[1]:
-                        for del_2 in tmp[1]:
-                            if del_2 == '"':
-                                tmp[1] = tmp[1].replace('"', '\\')
                 else:
                     if '.' in tmp[1]:
                         tmp[1] = float(tmp[1])
