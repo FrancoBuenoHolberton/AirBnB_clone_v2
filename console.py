@@ -128,17 +128,19 @@ class HBNBCommand(cmd.Cmd):
             del listarg[0]
             for i in listarg:
                 tmp = i.split('=')
+                tmp[1].replace('_',' ')
                 if '"' in tmp[1]:
                     tmp[1] = tmp[1][1:-1]
-                    if '_' in tmp[1]:
-                        for del_ in tmp[1]:
-                            if del_ == '_':
-                                tmp[1] = tmp[1].replace('_', ' ')
+                    #if '_' in tmp[1]:
+                     #   for del_ in tmp[1]:
+                      #      if del_ == '_':
+                       #         tmp[1] = tmp[1].replace('_', ' ')
                 else:
                     if '.' in tmp[1]:
                         tmp[1] = float(tmp[1])
                     else:
                         tmp[1] = int(tmp[1])
+                    print(type(tmp[1]))
                 setattr(new_instance, tmp[0], tmp[1])
 
         storage.save()
