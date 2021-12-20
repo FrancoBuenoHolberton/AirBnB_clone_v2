@@ -131,7 +131,9 @@ class HBNBCommand(cmd.Cmd):
                 if '"' in tmp[1]:
                     tmp[1] = tmp[1][1:-1]
                     if '_' in tmp[1]:
-                        tmp[1] = tmp[1].remplace('_', '')
+                        for del_ in tmp[1]:
+                            if del_ == '_':
+                                tmp[1] = tmp[1].replace('_', ' ')
                 else:
                     if '.' in tmp[1]:
                         tmp[1] = float(tmp[1])
