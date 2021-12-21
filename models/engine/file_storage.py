@@ -13,9 +13,10 @@ class FileStorage:
 
         if cls:
             objj = {}
-            for k, v in FileStorage.__objects.items():
-                if type(v) == cls:
-                    objj[k] = v
+            name = str(cls).split(".")[2].split("'")[0]
+            for k in FileStorage.__objects.keys():
+                if name in k:
+                    objj[k] = FileStorage.__objects[k]
             return objj
         return FileStorage.__objects
 
