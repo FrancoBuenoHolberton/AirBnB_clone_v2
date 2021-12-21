@@ -15,7 +15,7 @@ class FileStorage:
             for k, v in FileStorage.__objects.items():
                 if type(v) == cls:
                     objj[k] = v
-                    return objj
+            return objj
         return FileStorage.__objects
 
     def new(self, obj):
@@ -56,5 +56,7 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        if obj is not None and obj in FileStorage.__objects:
-            del obj
+        if obj:
+            keyy = obj.__class__.__name__ + '.' + obj.id
+            if keyy in FileStorage.__objects:
+                del FileStorage.__objects[keyy]
