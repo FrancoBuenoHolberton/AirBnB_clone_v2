@@ -4,6 +4,7 @@ from models.base_model import BaseModel
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 import models
+from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
@@ -23,6 +24,7 @@ class Place(BaseModel, Base):
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
         amenity_ids = []
+        reviews = relationship("Review", cascade="delete, all", backref="place")
     else:
         city_id = ""
         user_id = ""

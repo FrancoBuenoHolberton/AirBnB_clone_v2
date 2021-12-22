@@ -14,7 +14,7 @@ from models.amenity import Amenity
 from models.review import Review
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
-
+from sqlalchemy import create_engine
 
 classes = {
                'BaseModel': BaseModel, 'User': User, 'Place': Place,
