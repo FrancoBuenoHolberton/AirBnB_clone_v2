@@ -2,7 +2,7 @@
 """ State Module for HBNB project """
 from models.base_model import BaseModel
 from sqlalchemy import * 
-
+from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
