@@ -32,24 +32,24 @@ class DBStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        ret = {}
+        dic = {}
         if cls is None:
             for elem in self.__session.query(State).all():
-                ret[elem.__class__.__name__ + "." + elem.id] = elem
+                dic[elem.__class__.__name__ + "." + elem.id] = elem
             for elem in self.__session.query(User).all():
-                ret[elem.__class__.__name__ + "." + elem.id] = elem
+                dic[elem.__class__.__name__ + "." + elem.id] = elem
             for elem in self.__session.query(City).all():
-                ret[elem.__class__.__name__ + "." + elem.id] = elem
+                dic[elem.__class__.__name__ + "." + elem.id] = elem
             for elem in self.__session.query(Amenity).all():
-                ret[elem.__class__.__name__ + "." + elem.id] = elem
+                dic[elem.__class__.__name__ + "." + elem.id] = elem
             for elem in self.__session.query(Place).all():
-                ret[elem.__class__.__name__ + "." + elem.id] = elem
+                dic[elem.__class__.__name__ + "." + elem.id] = elem
             for elem in self.__session.query(Review).all():
-                ret[elem.__class__.__name__ + "." + elem.id] = elem
+                dic[elem.__class__.__name__ + "." + elem.id] = elem
         else:
             for elem in self.__session.query(cls).all():
-                ret[elem.__class__.__name__ + "." + elem.id] = elem
-        return ret
+                dic[elem.__class__.__name__ + "." + elem.id] = elem
+        return dic
 
     def new(self, obj):
         """Adds new object to sessio,"""
