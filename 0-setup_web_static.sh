@@ -23,8 +23,8 @@ html5="
 
 sudo echo "$html5" | sudo tee /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
-sudo chown ubuntu /data/
-sudo chgrp ubuntu /data/
+sudo chown -R ubuntu /data/
+sudo chgrp -R ubuntu /data/
 sudo sed -i '/listen 80 default_server;
 	     a location /hbnb_static/ {
 	     alias /data/web_static/current/;}' /etc/nginx/sites-available/default
