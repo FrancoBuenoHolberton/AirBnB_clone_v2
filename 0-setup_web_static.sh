@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #0. Prepare your web servers
 
+sudo apt update
+sudo apt -y install nginx
+
 sudo mkdir -p /data/web_static/releases/test/
 sudo touch /data/web_static/releases/test/index.html
 sudo rm /etc/nginx/sites-enabled/default
