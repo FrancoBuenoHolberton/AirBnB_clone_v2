@@ -7,6 +7,7 @@ from datetime import *
 
 
 def do_pack():
+    """ejecutador de packages"""
     try:
         local("mkdir -p versions")
         date = datetime.now().strftime("%Y%m%d%H%M%S")
