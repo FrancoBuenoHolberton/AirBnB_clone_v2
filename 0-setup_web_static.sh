@@ -4,6 +4,9 @@
 sudo apt update
 sudo apt -y install nginx
 
+sudo mkdir -p /data/
+sudo mkdir -p /data/web_static/
+sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/releases/test/
 sudo touch /data/web_static/releases/test/index.html
 sudo rm /etc/nginx/sites-enabled/default
