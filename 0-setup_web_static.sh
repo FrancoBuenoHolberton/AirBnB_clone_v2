@@ -1,26 +1,24 @@
 #!/usr/bin/env bash
 #0. Prepare your web servers
 
-sudo mkdir /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/releases/test/
 sudo touch /data/web_static/releases/test/index.html
 sudo rm /etc/nginx/sites-enabled/default
-echo "Html Empty" >
-ln -sf /data/web_static/current /data/web_static/releases/test/
-sudo chown Ubuntu /data/
-sudo chgrp group /data/
 
-    server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    add_header X-Served-By $HOSTNAME;
-    root   /var/www/html;
-    index  index.html index.htm;
-    location /redirect_me {
-        return 301 http://cuberule.com/;
-    }
-    error_page 404 /404.html;
-    location /404 {
-      root /var/www/html;
-      internal;
-    }
-}" > /etc/nginx/sites-available/default
+html5="
+<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>
+"
+
+sudo echo "$html5" | sudo tee /data/web_static/releases/test/index.html
+ln -sf /data/web_static/releases/test/ /data/web_static/current
+sudo chown ubuntu /data/
+sudo chgrp ubuntu /data/
+sudo sed -i '/listen 80 default_server;
+	     a location /hbnb_static/ {
+	     alias /data/web_static/current/;}' /etc/nginx/sites-available/default
