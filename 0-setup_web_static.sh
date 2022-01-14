@@ -9,7 +9,6 @@ sudo mkdir -p /data/web_static/
 sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/releases/test/
 sudo touch /data/web_static/releases/test/index.html
-sudo rm /etc/nginx/sites-enabled/default
 
 html5="
 <html>
@@ -25,7 +24,5 @@ sudo echo "$html5" | sudo tee /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 sudo chown -R ubuntu /data/
 sudo chgrp -R ubuntu /data/
-sudo sed -i '/listen 80 default_server;
-	     a location /hbnb_static/ {
-	     alias /data/web_static/current/;}' /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server;/a location /hbnb_static/ { alias /data/web_static/current/;}' /etc/nginx/sites-available/default
 sudo service nginx restart
