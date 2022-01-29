@@ -11,13 +11,14 @@ class State(BaseModel, Base):
     """ State class """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
-    #cities = relationship("City", backref="state")
 
     def __init__(self, *args, **kwargs):
         """initializesate"""
         super().__init__(*args, **kwargs)
 
     if models.Typestorage != "db":
+        cities = relationship("city", backref="state")
+    else:
         @property
         def cities(self):
             """getter for list of city instances related to theate"""
@@ -27,3 +28,4 @@ class State(BaseModel, Base):
                 if city.state_id == self.id:
                     lista.append(city)
             return lista
+        

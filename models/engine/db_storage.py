@@ -52,7 +52,7 @@ class DBStorage:
         return dic
 
     def new(self, obj):
-        """Adds new object to sessio,"""
+        """Adds new object to session"""
         self.__session.add(obj)
 
     def delete(self, obj=None):
@@ -72,3 +72,7 @@ class DBStorage:
                                        expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
+
+    def close(self):
+        """call remove() method on the private session"""
+        self.__session.close()
